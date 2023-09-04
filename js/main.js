@@ -17,12 +17,24 @@ return totalTime;
 
     
 }
+
+const varifi = (varifiedStatus)=>
+{
+    if(varifiedStatus){
+        const author=` <img src="./image/varified.png" alt="" class="h-5 w-5">`;
+        return author
+     }
+     else{ 
+        const author = '';
+        return author
+     }
+}
 const nev = ()=>{
     const firstNev = document.getElementById('firstNev');
     firstNev.classList = 'flex justify-between p-5';
     firstNev.innerHTML =` <div> <img src="./image/Logo.png" alt=""></div>
     <div> <button class="btn">Sort by view</button></div>
-    <div><button class="btn btn-primary  bg-orange-600 hover:bg-orange-700"> Blog</button></div>`;
+    <div><button class="btn btn-primary text-base-100 bg-[#FF1F3D] hover:bg-[#FF1F3D] active:bg-[#FF1F3D] border-none"> Blog</button></div>`;
 
 }
 
@@ -36,11 +48,13 @@ const allVideoContant = async (id)=>{
 }
 const allContantDiaply = (videos) =>{
     const cardSection = document.getElementById('cardSection');
-    cardSection.classList ='grid  grid-cols-4 gap-5';
+    cardSection.classList ='grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5';
     cardSection.textContent='';
     videos.forEach(video =>{
 
         const second = video.others.posted_date;
+        const varifiedStatus =video.authors[0].verified;
+       const  Isvarifi =varifi(varifiedStatus);
          const timeDuration = calculationTime(second);
 
         const cardDiv = document.createElement('div');
@@ -51,7 +65,7 @@ const allContantDiaply = (videos) =>{
         <div class=" flex py-5 gap-3">
         <div class="p-2">  <img src="${video.authors[0].profile_picture}" alt="" class="rounded-full h-10 w-10"> </div>
         <div>  <h2 class="card-title">${video.title}</h2>
-        <p>${video.authors[0].profile_name}</p>
+        <p class="flex gap-3">${video.authors[0].profile_name}  ${Isvarifi}  </p>
         <p>${video.others.views} views </p>
         </div>
         
@@ -61,12 +75,13 @@ const allContantDiaply = (videos) =>{
       </div>
       
       <div class="bg-black absolute top-32 left-44 px-2" >
-      <p class="text-white text-sm">
+      <p  class="text-white text-sm">
 ${timeDuration}
       </p>
     </div>
       
       `;
+    
      
       cardSection.appendChild(cardDiv);
       
@@ -99,7 +114,7 @@ const catagoriesDataDisplay = (catagories)=>{
     threeButton.classList='flex justify-center gap-5 p-5';
     catagories.forEach(catagorie =>{
  const div = document.createElement('div');
- div.innerHTML=`<button id="${catagorie.category}" class="btn active:bg-orange-800" onclick= "click${catagorie.category}(${catagorie.category_id})">${catagorie.category}</button>`;
+ div.innerHTML=`<button id="${catagorie.category}" class="btn active:bg-[#FF1F3D]" onclick= "click${catagorie.category}(${catagorie.category_id})">${catagorie.category}</button>`;
  threeButton.appendChild(div);
  
 
