@@ -1,4 +1,22 @@
 
+
+const calculationTime = (second)=>{
+const hourCount = second/3600;
+const day = hourCount/24;
+const hour = hourCount%24;
+const min = (second%3600)/60;
+if(hour===0 && min === 0){
+    const totalTime ='';
+    return totalTime;
+}
+
+
+const totalTime = `${parseInt(hour)}hrs ${parseInt(min)}min ago`;
+
+return totalTime;
+
+    
+}
 const nev = ()=>{
     const firstNev = document.getElementById('firstNev');
     firstNev.classList = 'flex justify-between p-5';
@@ -22,20 +40,29 @@ const allContantDiaply = (videos) =>{
     cardSection.textContent='';
     videos.forEach(video =>{
 
+        const second = video.others.posted_date;
+         const timeDuration = calculationTime(second);
+
         const cardDiv = document.createElement('div');
-        cardDiv.classList = 'card card-compact h-64 bg-base-100 rounded rounded-lg  relative';
+        
+        cardDiv.classList = 'card card-compact h-72 bg-base-100 rounded rounded-lg  relative';
         cardDiv.innerHTML = `<figure><img src="${video.thumbnail}" alt="Shoes "  /></figure>
         
-        <div class="card-body">
-          <h2 class="card-title">Shoes!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
+        <div class=" flex py-5 gap-3">
+        <div class="p-2">  <img src="${video.authors[0].profile_picture}" alt="" class="rounded-full h-10 w-10"> </div>
+        <div>  <h2 class="card-title">${video.title}</h2>
+        <p>${video.authors[0].profile_name}</p>
+        <p>${video.others.views} views </p>
+        </div>
+        
          
         </div>
+       
       </div>
       
-      <div class="bg-black absolute " >
-      <p class="text-white">
-hii it is a pra
+      <div class="bg-black absolute top-32 left-44 px-2" >
+      <p class="text-white text-sm">
+${timeDuration}
       </p>
     </div>
       
@@ -48,7 +75,9 @@ hii it is a pra
     })
     
     if(!cardSection.textContent){
-       cardSection.innerHTML = ` <img src="./image/Icon.png" alt="">`;
+       cardSection.classList.remove('grid');
+       cardSection.classList.add('py-36');
+       cardSection.innerHTML = ` <div class=" flex justify-center items-center"> <img  src="./image/Icon.png" alt=""> </div> <h1 class="text-2xl font-bold text-center"> Oops!! Sorry, There is no content here </h1> `;
        
       }
       
@@ -97,3 +126,4 @@ const clickDrawing=(id)=>{
 }
  nev();
 catagoryfath();
+allVideoContant(1000);
