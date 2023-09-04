@@ -1,5 +1,17 @@
 
 
+const arr= [];
+const arrNumber = [];
+const sort= (arr) =>{
+    for(const  numArray of arr) {
+const numberA = parseFloat(numArray)
+arrNumber.push(numberA);
+    }
+ 
+
+
+}
+
 const calculationTime = (second)=>{
 const hourCount = second/3600;
 const day = hourCount/24;
@@ -34,7 +46,7 @@ const nev = ()=>{
     const firstNev = document.getElementById('firstNev');
     firstNev.classList = 'flex justify-between p-5';
     firstNev.innerHTML =` <div> <img src="./image/Logo.png" alt=""></div>
-    <div> <button class="btn">Sort by view</button></div>
+    <div> <button onclick="sort(arr)" class="btn">Sort by view</button></div>
     <div><button onclick="blogWrite()" class="btn btn-primary text-base-100 bg-[#FF1F3D] hover:bg-[#FF1F3D] active:bg-[#FF1F3D] border-none"> Blog</button></div>`;
 
 }
@@ -48,11 +60,13 @@ const allVideoContant = async (id)=>{
 
 }
 const allContantDiaply = (videos) =>{
+    
     const cardSection = document.getElementById('cardSection');
     cardSection.classList ='grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5';
     cardSection.textContent='';
     videos.forEach(video =>{
 
+        const view =video.others.views;
         const second = video.others.posted_date;
         const varifiedStatus =video.authors[0].verified;
        const  Isvarifi =varifi(varifiedStatus);
@@ -67,7 +81,7 @@ const allContantDiaply = (videos) =>{
         <div class="p-2">  <img src="${video.authors[0].profile_picture}" alt="" class="rounded-full h-10 w-10"> </div>
         <div>  <h2 class="card-title">${video.title}</h2>
         <p class="flex gap-3">${video.authors[0].profile_name}  ${Isvarifi}  </p>
-        <p>${video.others.views} views </p>
+        <p>${view} views </p>
         </div>
         
          
@@ -83,6 +97,7 @@ ${timeDuration}
       
       `;
     
+     arr.push(view);
      
       cardSection.appendChild(cardDiv);
       
@@ -126,19 +141,20 @@ const clickAll=(id)=>{
 
 allVideoContant(id);
 
-    console.log(id);
+   
 }
 const clickMusic=(id)=>{
     allVideoContant(id);
-    console.log(id);
+    
+  
 }
 const clickComedy=(id)=>{
     allVideoContant(id);
-    console.log(id);
+   
 }
 const clickDrawing=(id)=>{
     allVideoContant(id);
-    console.log(id);
+   
 }
  nev();
 catagoryfath();
