@@ -7,7 +7,8 @@ const sort= (arr) =>{
 const numberA = parseFloat(numArray)
 arrNumber.push(numberA);
     }
- 
+ arrNumber.reverse();
+ console.log(arrNumber);
 
 
 }
