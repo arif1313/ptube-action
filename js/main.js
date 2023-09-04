@@ -29,12 +29,13 @@ const varifi = (varifiedStatus)=>
         return author
      }
 }
+
 const nev = ()=>{
     const firstNev = document.getElementById('firstNev');
     firstNev.classList = 'flex justify-between p-5';
     firstNev.innerHTML =` <div> <img src="./image/Logo.png" alt=""></div>
     <div> <button class="btn">Sort by view</button></div>
-    <div><button class="btn btn-primary text-base-100 bg-[#FF1F3D] hover:bg-[#FF1F3D] active:bg-[#FF1F3D] border-none"> Blog</button></div>`;
+    <div><button onclick="blogWrite()" class="btn btn-primary text-base-100 bg-[#FF1F3D] hover:bg-[#FF1F3D] active:bg-[#FF1F3D] border-none"> Blog</button></div>`;
 
 }
 
@@ -142,3 +143,61 @@ const clickDrawing=(id)=>{
  nev();
 catagoryfath();
 allVideoContant(1000);
+const blogWrite = ()=>{
+
+    const main = document.getElementById('main') ;
+    main.innerHTML =` <section>
+    <h1 class="text-2xl font-bold text-center mb-7 underline"> Question 1: Discuss the scope of var, let, and const
+    </h1>
+    <div class="flex justify-around">
+        <div>
+            <h2 class="text-xl font-bold"> var</h2>
+
+            <li>variable can redeclared</li>
+            <li>can be re-assign </li>
+            <li> It do not mantain Block Scope</li>
+
+        </div>
+        <div>
+            <h2 class="text-xl font-bold"> Let</h2>
+
+            <li>variable can not be redeclared</li>
+            <li>can be re-assign </li>
+            <li> It mantain Block Scope</li>
+
+        </div>
+        <div>
+            <h2 class="text-xl font-bold"> Const</h2>
+
+            <li>variable can not be redeclared</li>
+            <li>can not be re-assign </li>
+            <li> It mantain Block Scope</li>
+
+        </div>
+
+    </div>
+    <div>
+        <section class="m-7">
+            <h1 class="text-2xl font-bold text-center"> question 2: Tell us the use cases of null and undefined</h1>
+            <h2 class="text-xl font-bold"> Undefined </h2>
+            <li>Variable not initialized</li>
+            <li>Function With No return</li>
+            <li> perameter that is not pass</li>
+            <li> If return has nothing on the right side </li>
+            <li>properly missing </li>
+            <li>array position not set in the range</li>
+
+            <h2 class="text-xl font-bold"> Null </h2>
+            <li>blank arry </li>
+            <li>blank object </li>
+            <li>blank string </li>
+
+        </section>
+        <h1 class="text-2xl font-bold   text-center"> Question 3:What do you mean by REST API?</h1>
+        <p class="p-7"> REST API is a way of accessing web services in a simple and flexible way without having any
+            processing.
+            It’s used to fetch or give some information from a web service.
+        </p>
+    </div>
+</section>`;
+}
